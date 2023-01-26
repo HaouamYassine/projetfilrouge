@@ -20,6 +20,8 @@ public class AuthentificationFilter implements Filter {
         String uri = req.getRequestURI();
         System.out.println(uri);
 
+        // TO DO:  Gestion de l'administration avec le filtre
+
 
         // Get existing session or return null
         boolean wantCreateIfNotExist = false;
@@ -29,7 +31,7 @@ public class AuthentificationFilter implements Filter {
             // Filtrage OK
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            resp.sendRedirect(LoginServlet.URL);
+            resp.sendRedirect("/login");
         }
 
     }

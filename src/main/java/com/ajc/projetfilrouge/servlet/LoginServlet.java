@@ -9,16 +9,16 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet (urlPatterns = LoginServlet.URL)
+@WebServlet (urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
-    public static final String URL = "/login";
+   //public static final String URL = "/login";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("username") != null) {
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("login.jsp");
         } else {
             req.getRequestDispatcher("/WEB-INF/login.jsp")
                     .forward(req, resp);
@@ -38,10 +38,10 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute("username", username);
             // Expiration after 30 minutes
-            session.setMaxInactiveInterval(30 * 60);
+           // session.setMaxInactiveInterval(30 * 60);
 
 
-            resp.sendRedirect("/index.jsp");
+            resp.sendRedirect("/home");
         } else {
             req.setAttribute("loginFail", true);
             doGet(req, resp);
