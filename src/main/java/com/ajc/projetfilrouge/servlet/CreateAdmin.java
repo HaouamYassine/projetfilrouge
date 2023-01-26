@@ -1,2 +1,7 @@
-package com.ajc.projetfilrouge.servlet;public class CreateAdmin {
+package com.ajc.projetfilrouge.servlet;
+
+import jakarta.servlet.http.HttpServlet;
+
+public class CreateAdmin extends HttpServlet {
+
 }
