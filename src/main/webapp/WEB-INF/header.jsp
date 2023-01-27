@@ -30,7 +30,7 @@
             <c:when test="${sessionScope.admin == true}">
 
               <li class="nav-item">
-                <a class="nav-link" href="#"> Create admin</a>
+                <a class="nav-link" href="/add-admin"> Create admin</a>
               </li>
 
             </c:when>
