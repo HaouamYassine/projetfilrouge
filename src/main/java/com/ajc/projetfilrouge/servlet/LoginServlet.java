@@ -37,6 +37,8 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession(true);
 
             session.setAttribute("username", username);
+            // Creation d'un attribut admin, pour tester la navbar avec un super admin
+            session.setAttribute("admin", true);
             // Expiration after 30 minutes
            // session.setMaxInactiveInterval(30 * 60);
 
