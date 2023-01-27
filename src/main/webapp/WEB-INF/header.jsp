@@ -26,7 +26,7 @@
 <c:choose>
     <c:when test="${not empty sessionScope.username}">
           <span class="navbar-text">
-      Username <button class="btn btn-sm btn-outline-secondary" type="button"> Déconnexion </button>
+      Username <form method="post" action="/logout" type="submit"> <button class="btn btn-sm btn-outline-secondary">  Déconnexion </button> </form>
     </span>
         <c:choose>
             <c:when test="${sessionScope.admin == true}">

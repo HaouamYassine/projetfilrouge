@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class User {//Création d'un utilisateur et de ses attributs
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Boolean admin;
     private String username;

@@ -29,7 +29,7 @@ public class CreateAdmin extends HttpServlet {
         Boolean admin = true;
 
         User user = new User(username,email,password,admin);
-        Dao<User> userDao = DaoFactory.getPastryDao();
+        Dao<User> userDao = DaoFactory.getUserDao();
         userDao.save(user);
 
         resp.sendRedirect(req.getContextPath()+"/home");
