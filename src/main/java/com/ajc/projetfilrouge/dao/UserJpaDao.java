@@ -32,6 +32,8 @@ public class UserJpaDao implements UserDao {
         return result;
     }
 
+
+
     @Override //Récupère tous les utilisateurs dans une liste
     public List<User> getAll() {
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -52,6 +54,7 @@ public class UserJpaDao implements UserDao {
         }
         return users;
     }
+
 
     @Override
     public void save(User user) {
@@ -105,5 +108,29 @@ public class UserJpaDao implements UserDao {
             em.close();
         }
 
+    }
+
+    // Fonction permettant de récupérer un user via son username
+    @Override
+    public Optional<User> getUserByName(String username) {
+        Optional<User> result = Optional.empty();
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        try {
+            TypedQuery<User> usersQuery = em
+                    .createQuery("SELECT u FROM User u WHERE u.username =:name ", User.class)
+                    .setParameter("name", username);
+            Optional.of(usersQuery);
+            result=Optional.of(usersQuery.getSingleResult());
+            et.commit();
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback();
+            }
+        } finally {
+            em.close();
+        }
+        return result;
     }
 }

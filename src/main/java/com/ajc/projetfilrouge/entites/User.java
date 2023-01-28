@@ -1,9 +1,6 @@
 package com.ajc.projetfilrouge.entites;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {//Création d'un utilisateur et de ses attributs
@@ -11,6 +8,7 @@ public class User {//Création d'un utilisateur et de ses attributs
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Boolean admin;
+    @Column(unique = true)
     private String username;
     private String mail;
     private String password;
