@@ -71,6 +71,11 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession(true);
 
                 session.setAttribute("username", username);
+                // Si c'est le super admin qui est co on set la valeur à true (pour débloquer la création d'admin via la navbar)
+                String admin=user.get().getUsername();
+                if (admin.equals("admin")) {
+                session.setAttribute("admin", true);
+                }
                 // Expiration after 30 minutesstatus
                 session.setMaxInactiveInterval(30 * 60);
                 resp.sendRedirect("/home");
