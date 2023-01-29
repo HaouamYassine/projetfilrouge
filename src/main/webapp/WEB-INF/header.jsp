@@ -19,7 +19,14 @@
 <div class="collapse navbar-collapse" id="navbarText">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item active">
-    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="/home">Home <span class="sr-only">
+        (<c:choose> <c:when test="${not empty sessionScope.username}">
+        ${sessionScope.username}
+        </c:when>
+        <c:otherwise>
+            invité
+        </c:otherwise>
+    </c:choose></c>)</span></a>
 </li>
 
 <%--      Condition d'affichage de navbar différente selon l'utilisateur--%>
