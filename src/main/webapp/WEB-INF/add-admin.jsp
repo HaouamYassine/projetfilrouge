@@ -21,7 +21,7 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <c:choose>
-<c:when test="${sessionScope.admin == true}">
+<c:when test="${sessionScope.superadmin == true}">
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
