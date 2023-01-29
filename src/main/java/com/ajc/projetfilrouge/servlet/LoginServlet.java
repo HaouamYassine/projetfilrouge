@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.hibernate.internal.build.AllowSysOut;
 
 
 import java.io.IOException;
@@ -59,11 +60,13 @@ public class LoginServlet extends HttpServlet {
 
         UserDao dao = DaoFactory.getUserDao();
         Optional<User> user = dao.getUserByName(username);
+
         if (user.isPresent()) {
-            //check MDP
             String passwordBDD = user.get().getPassword();
+            //check MDP
+
             // Si le MDP est identique à l'entrée utilisateur
-            if (password==passwordBDD) {
+            if (password.equals(passwordBDD)) {
                 // Get existing session or create one if not exist
                 HttpSession session = req.getSession(true);
 
@@ -74,33 +77,40 @@ public class LoginServlet extends HttpServlet {
 
 
             }
-            else {
+            else if (password!=passwordBDD){// mauvais mdp correspondant
+                String msg ="mauvais mot de passe";
+                System.out.println(msg);
+                req.setAttribute("loginFail", true);
+                doGet(req, resp);
 
             }
-        } else {
-                String msg ="nom d'utilisateur introuvable";
+        } else {// username pas dans la BDD
+            String msg ="nom d'utilisateur introuvable";
+            System.out.println(msg);
+            req.setAttribute("loginFail", true);
+            doGet(req, resp);
         }
 
         //for (String usernameDB : user:
 
 
 
-
-        if (username.equals("admin") && password.equals("admin")) {
-            // Get existing session or create one if not exist
-            HttpSession session = req.getSession(true);
-
-            session.setAttribute("username", username);
-            // Creation d'un attribut admin, pour tester la navbar avec un super admin
-            session.setAttribute("admin", true);
-            // Expiration after 30 minutes
-            session.setMaxInactiveInterval(30 * 60);
-
-
-            resp.sendRedirect("/home");
-        } else {
-            req.setAttribute("loginFail", true);
-            doGet(req, resp);
-        }
+        // TEST DE CONNEXION EN DUR  EN MODE SUPER ADMIN
+//        if (username.equals("admin") && password.equals("admin")) {
+//            // Get existing session or create one if not exist
+//            HttpSession session = req.getSession(true);
+//
+//            session.setAttribute("username", username);
+//            // Creation d'un attribut admin, pour tester la navbar avec un super admin
+//            session.setAttribute("admin", true);
+//            // Expiration after 30 minutes
+//            session.setMaxInactiveInterval(30 * 60);
+//
+//
+//            resp.sendRedirect("/home");
+//        } else {
+//            req.setAttribute("loginFail", true);
+//            doGet(req, resp);
+//        }
     }
 }
