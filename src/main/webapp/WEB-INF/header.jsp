@@ -29,7 +29,7 @@
       Username <form method="post" action="/logout" type="submit"> <button class="btn btn-sm btn-outline-secondary">  Déconnexion </button> </form>
     </span>
         <c:choose>
-            <c:when test="${sessionScope.admin == true}">
+            <c:when test="${sessionScope.superadmin == true}">
 
                 <li class="nav-item">
                     <a class="nav-link" href="/add-admin"> Create admin</a>
