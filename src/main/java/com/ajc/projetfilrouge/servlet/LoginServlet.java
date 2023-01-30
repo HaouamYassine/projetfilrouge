@@ -73,8 +73,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("username", username);
                 // Si c'est le super admin qui est co on set la valeur à true (pour débloquer la création d'admin via la navbar)
                 String superadmin=user.get().getUsername();
+                // On stocke le bool vérifiant si l'utilisateur est un ADMIN ou NON
+                Boolean adminBool=user.get().getAdmin();
                 if (superadmin.equals("admin")) {
                 session.setAttribute("superadmin", true);
+                session.setAttribute("adminBool", adminBool);
                 }
                 // Expiration after 30 minutesstatus
                 session.setMaxInactiveInterval(30 * 60);
