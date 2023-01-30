@@ -71,10 +71,12 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession(true);
 
                 session.setAttribute("username", username);
+                Boolean adminBool=user.get().getAdmin();
+                session.setAttribute("adminBool", adminBool);
                 // Si c'est le super admin qui est co on set la valeur à true (pour débloquer la création d'admin via la navbar)
                 String superadmin=user.get().getUsername();
                 // On stocke le bool vérifiant si l'utilisateur est un ADMIN ou NON
-                Boolean adminBool=user.get().getAdmin();
+
                 if (superadmin.equals("admin")) {
                 session.setAttribute("superadmin", true);
                 session.setAttribute("adminBool", adminBool);

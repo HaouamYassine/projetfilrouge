@@ -45,6 +45,13 @@
                     <a class="nav-link" href="/user-list">User List</a>
                 </li>
             </c:when>
+            <c:when test="${sessionScope.adminBool == true}">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/user-list">User List</a>
+                </li>
+            </c:when>
+
         </c:choose>
     </c:when>
 </c:choose>
