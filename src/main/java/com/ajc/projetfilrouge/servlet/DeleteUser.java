@@ -24,8 +24,20 @@ public class DeleteUser extends HttpServlet {
             Optional<User> user = dao.get(id);
 
             if (user.isPresent()) {
-                dao.delete(user.get());
-                resp.sendRedirect(req.getContextPath() + "/user-list");
+                //TO DO: Protéger le superadmin de la suppression : on n'a pas le droit de le supprimer
+                // SI on veut supprimer le superadmin qui a l'id 1 (il faut que ce soit son id par défaut)
+                if (idStr.equals("1"))
+                {
+                    // On redirige vers la page des users car on n'a pas le droit de le supprimer (si on peut ajouter un msg d'erreur c'est mieux)
+                    resp.sendRedirect(req.getContextPath() + "/user-list");
+                }
+                // Si c'est un utilisateur autre
+                else {
+                    //on le supprime de la base
+                    dao.delete(user.get());
+                    resp.sendRedirect(req.getContextPath() + "/user-list");
+                }
+
             } else {
             }
 
