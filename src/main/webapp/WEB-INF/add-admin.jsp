@@ -31,7 +31,7 @@
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Create admin</p>
 
                 <form method="post" action="/add-admin" class="mx-1 mx-md-4">
 
@@ -39,7 +39,7 @@
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input name="username" type="text" id="username" class="form-control" />
-                      <label  class="form-label" for="username">Your Name</label>
+                      <label  class="form-label" for="username">Username</label>
                     </div>
                   </div>
 
@@ -47,7 +47,7 @@
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input name="email" type="email" id="email" class="form-control" />
-                      <label class="form-label" for="email">Your Email</label>
+                      <label class="form-label" for="email">Email</label>
                     </div>
                   </div>
 
