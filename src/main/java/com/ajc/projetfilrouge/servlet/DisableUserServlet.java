@@ -1,4 +1,8 @@
 package com.ajc.projetfilrouge.servlet;
 
-public class DisableUserServlet {
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns = "/user")
+public class DisableUserServlet extends HttpServlet {
 }
