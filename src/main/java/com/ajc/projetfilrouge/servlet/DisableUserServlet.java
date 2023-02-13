@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = "/enable-user")
+@WebServlet(urlPatterns = "/disable-user")
 public class DisableUserServlet extends HttpServlet {
 
     @Override
