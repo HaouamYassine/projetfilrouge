@@ -45,16 +45,22 @@
                                 (et le lier à une modif en BDD via servlet EnableUserServlet ou DisableUserServlet)
                                 -->
                                     <%--                                Si bool actif à 1: affichez ceci et renvoyer la servlet correspondante--%>
+                                <c:choose>
+                                <c:when test="${user.activate eq'1'}">
                                 <a href="/enable-user?idUser=${user.id}">
-                                    <button type="button" class="btn btn-warning">Désactiver</button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal">Désactiver</button>
                                 </a>
+                                </c:when>
+                                <c:otherwise>
                                         <%--                                Si bool actif à 0: affichez ceci et renvoyer la servlet correspondante--%>
                                 <a href="/enable-user?idUser=${user.id}">
-                                    <button type="button" class="btn btn-warning">Activer</button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal">Activer</button>
                                 </a>
+                                </c:otherwise>
+                                </c:choose>
                                     <%--                                Renvoyer à la servlet modifier (update)--%>
                                 <a href="/update-user?idUser=${user.id}">
-                                    <button type="button" class="btn btn-warning">Modifier</button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal">Modifier</button>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal${user.id}">
