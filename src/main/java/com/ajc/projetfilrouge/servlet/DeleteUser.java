@@ -24,7 +24,7 @@ public class DeleteUser extends HttpServlet {
             Optional<User> user = dao.get(id);
 
             if (user.isPresent()) {
-                //TO DO: Protéger le superadmin de la suppression : on n'a pas le droit de le supprimer
+                // TODO: Protéger le superadmin de la suppression : on n'a pas le droit de le supprimer
                 // SI on veut supprimer le superadmin qui a l'id 1 (il faut que ce soit son id par défaut)
                 if (idStr.equals("1"))
                 {
