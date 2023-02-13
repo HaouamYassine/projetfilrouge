@@ -40,13 +40,22 @@
                         <td>${user.mail}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <!--TO DO:
+                                <!--TODO:
                                 Utiliser le bool actif ou pas actif pour afficher soit Activer soit Désactiver
                                 (et le lier à une modif en BDD via servlet EnableUserServlet ou DisableUserServlet)
                                 -->
-                                <button type="button" class="btn btn-warning">Activer/Désactiver</button>
-                                <button type="button" class="btn btn-warning">Modifier</button>
-
+                                    <%--                                Si bool actif à 1: affichez ceci et renvoyer la servlet correspondante--%>
+                                <a href="/enable-user?idUser=${user.id}">
+                                    <button type="button" class="btn btn-warning">Désactiver</button>
+                                </a>
+                                        <%--                                Si bool actif à 0: affichez ceci et renvoyer la servlet correspondante--%>
+                                <a href="/enable-user?idUser=${user.id}">
+                                    <button type="button" class="btn btn-warning">Activer</button>
+                                </a>
+                                    <%--                                Renvoyer à la servlet modifier (update)--%>
+                                <a href="/update-user?idUser=${user.id}">
+                                    <button type="button" class="btn btn-warning">Modifier</button>
+                                </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal${user.id}">
                                     Supprimer
