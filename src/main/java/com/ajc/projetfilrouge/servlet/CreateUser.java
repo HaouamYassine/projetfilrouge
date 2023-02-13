@@ -11,12 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/add-suer")
+@WebServlet(urlPatterns = "/add-user")
 public class CreateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/add-use.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/add-user.jsp").forward(req, resp);
     }
 
     @Override
