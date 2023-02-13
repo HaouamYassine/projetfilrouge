@@ -11,30 +11,27 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/add-admin")
-public class CreateAdmin extends HttpServlet {
+@WebServlet(urlPatterns = "/add-suer")
+public class CreateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/add-admin.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/add-use.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Récupération des données pour la création de compte
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
-        //TODO Par defaut toujours true: il faudrait donner le choix de la création (à cocher sur jsp)
-        Boolean admin = true;
+
+        Boolean users = true;
         Boolean activate = true;
 
-
-        User user = new User(username,email,password,admin, activate);
+        User user = new User(username, email, password, users, activate);
         Dao<User> userDao = DaoFactory.getUserDao();
         userDao.save(user);
 
-        resp.sendRedirect(req.getContextPath()+"/home");
-
+        resp.sendRedirect(req.getContextPath() + "/home");
     }
 }
