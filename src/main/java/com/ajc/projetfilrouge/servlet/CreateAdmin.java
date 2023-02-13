@@ -26,9 +26,12 @@ public class CreateAdmin extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
+        //TODO Par defaut toujours true: il faudrait donner le choix de la création (à cocher sur jsp)
         Boolean admin = true;
+        Boolean activate = true;
 
-        User user = new User(username,email,password,admin);
+
+        User user = new User(username,email,password,admin, activate);
         Dao<User> userDao = DaoFactory.getUserDao();
         userDao.save(user);
 

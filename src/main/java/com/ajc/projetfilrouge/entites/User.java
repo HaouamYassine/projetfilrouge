@@ -13,6 +13,8 @@ public class User {//Création d'un utilisateur et de ses attributs
     private String mail;
     private String password;
 
+    private Boolean activate;
+
     // CONSTRUCTEURS
 
 
@@ -21,11 +23,12 @@ public class User {//Création d'un utilisateur et de ses attributs
     }
 
 
-    public User(String username, String mail, String password, Boolean admin) {
+    public User(String username, String mail, String password, Boolean admin, Boolean activate) {
         this.username = username;
         this.mail = mail;
         this.password = password;
         this.admin = admin;
+        this.activate = activate;
     }
 
 
@@ -81,5 +84,11 @@ public class User {//Création d'un utilisateur et de ses attributs
         this.password = password;
     }
 
+    public Boolean getActivate() {
+        return activate;
+    }
 
+    public void setActivate(Boolean activate) {
+        this.activate = activate;
+    }
 }
